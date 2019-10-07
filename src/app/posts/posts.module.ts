@@ -12,7 +12,8 @@ import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: 'blog', component: PostListComponent },
-  { path: 'blog/:id', component: PostEditComponent },
+  // { path: 'blog/:id', component: PostEditComponent },
+  { path: 'edit', component: PostEditComponent },
   { path: 'dashboard', component: PostDashboardComponent },
 ]
 

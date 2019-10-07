@@ -16,20 +16,21 @@ export class PostEditComponent implements OnInit {
 
   constructor(
     private _postService: PostService,
-    private _postServiceData: PostDataService,
     public auth: AuthService
   ) {}
 
   ngOnInit() {
-    this.post = new Post();
-    // this._postServiceData.changePost.subscribe(data => {
-    //   if(data.post && data.key) {
-    //     this.post = new Post();
-    //     this.post.conteudo = data.post.conteudo;
-    //   }
-    // })
   }
-  getPosts() {
+
+  updatePost(isActive: boolean) {
+    this._postService.updatePost(this.post.key, { active: isActive })
+      .catch(err => console.log(err));
+  }
+ 
+  deletePost() {
+    this._postService
+      .deletePost(this.post.key)
+      .catch(err => console.log(err));
   }
 
   

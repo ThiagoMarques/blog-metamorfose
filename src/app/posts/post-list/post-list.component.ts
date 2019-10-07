@@ -12,27 +12,28 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class PostListComponent implements OnInit {
   
-  // posts: Observable<Post[]>
-  // constructor(private postService: PostService, 
-  //   public auth: AuthService) {}
-
-  // ngOnInit() {
-  // }
-  title = 'Angular8Firebase';
-  description = 'Angular-Fire-Demo';
+  post: any;
  
-  itemValue = '';
-  items: Observable<any[]>;
+  constructor(private _postservice: PostService) { }
  
-  constructor(public db: AngularFireDatabase) {
-    this.items = db.list('items').valueChanges();
-  }
   ngOnInit() {
+    this.getPostsList();
   }
  
-  onSubmit() {
-    this.db.list('items').push({ content: this.itemValue});
-    this.itemValue = '';
+  getPostsList() {
+    this._postservice.getPostsList().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(post => {
+      this.post = post;
+    });
+  }
+ 
+  deletePosts() {
+    this._postservice.deleteAll().catch(err => console.log(err));
   }
 
 }

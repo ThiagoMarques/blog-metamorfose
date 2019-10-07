@@ -1,36 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Post } from './post';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class PostService {
-
-  constructor
-    (
-      private _angularFireDatabase: AngularFireDatabase
-    ) { }
-  insert(post: Post) {
-    this._angularFireDatabase.list("posts").push(post).then((result: any) => {
-      console.log(result.key);
-    });
+ 
+  private dbPath = '/posts';
+ 
+  postsRef: AngularFireList<Post> = null;
+ 
+  constructor(private db: AngularFireDatabase) {
+    this.postsRef = db.list(this.dbPath);
   }
-  update(post: Post, key: string) {
-    this._angularFireDatabase.list("posts").update(key, post);
+ 
+  createPost(posts: Post): void {
+    this.postsRef.push(posts);
   }
-  // getAll() {
-  //   return this._angularFireDatabase.list("posts").snapshotChanges()
-  //     .pipe(
-  //       map(changes => {
-  //         return changes.map(data => ({
-  //           key: data.payload.key, ...data.payload.val()
-  //         }));
-  //       })
-  //     )
-  // }
-  delete(key: string) {
-    this._angularFireDatabase.object(`posts/${key}`).remove();
+ 
+  updatePost(key: string, value: any): Promise<void> {
+    return this.postsRef.update(key, value);
+  }
+ 
+  deletePost(key: string): Promise<void> {
+    return this.postsRef.remove(key);
+  }
+ 
+  getPostsList(): AngularFireList<Post> {
+    return this.postsRef;
+  }
+ 
+  deleteAll(): Promise<void> {
+    return this.postsRef.remove();
   }
 }

@@ -1,0 +1,20 @@
+<p>EDit</p>
+<div *ngIf="post">
+    <div>
+      <label>First Name: </label> {{post.name}}
+    </div>
+    <div>
+      <label>Age: </label> {{post.age}}
+    </div>
+    <div>
+      <label>Active: </label> {{post.active}}
+    </div>
+   
+    <span class="button is-small btn-primary" *ngIf='post.active' (click)='updatePost(false)'>Inactive</span>
+   
+    <span class="button is-small btn-primary" *ngIf='!post.active' (click)='updatePost(true)'>Active</span>
+   
+    <span class="button is-small btn-danger" (click)='deletePost()'>Delete</span>
+   
+    <hr/>
+  </div>
