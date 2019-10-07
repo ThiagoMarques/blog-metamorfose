@@ -24,17 +24,12 @@
         <a class="nav-link" href="#">Contato <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <ul class="nav justify-content-end">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="login" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Usuário X
-        </a>
-        <div class="dropdown-menu" aria-labelledby="login">
-          <a class="dropdown-item" href="#">Perfil</a>
-          <a class="dropdown-item" href="#">Logout</a>
-        </div>
-      </li>
-  </ul>
+    <div *ngIf="auth.afAuth.authState | async as user; else showLogin">
+      <button (click)="logout()" mat-button>Logout</button>
+    </div>
+    <ng-template #showLogin>
+      <button (click)="login()" mat-button>Login</button>
+    </ng-template>
   </div>
 </nav>
 
