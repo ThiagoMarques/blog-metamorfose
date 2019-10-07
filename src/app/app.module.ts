@@ -7,17 +7,22 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ListComponent } from './posts/list/list.component';
+import { EditComponent } from './posts/edit/edit.component';
+import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule,
-    AngularFireDatabaseModule
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
