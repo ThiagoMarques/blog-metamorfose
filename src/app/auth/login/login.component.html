@@ -1,41 +1,29 @@
-<div class="displayTable">
-  <div class="displayTableCell">
+<div class="container mt-5">
 
-    <div class="authBlock">
-      <h3>Sign In</h3>
-      <div class="formGroup">
-        <input type="text" class="formControl" placeholder="Username" #userName required>
-      </div>
-
-      <div class="formGroup">
-        <input type="password" class="formControl" placeholder="Password" #userPassword required>
-      </div>
-
-      <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup">
-        <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
-      </div>
-
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-
-      <!-- Calling GoogleAuth Api from AuthService -->
-      <div class="formGroup">
-        <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-          <i class="fab fa-google-plus-g"></i>
-          Log in with Google
-        </button>
-      </div>
-
-      <div class="forgotPassword">
-        <span routerLink="/forgot-password">Forgot Password?</span>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-body text-center">
+          <h1>Metamorfose</h1>
+          <form [formGroup]="formLogin" #formDir="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="form-group">
+              <label for="email" class="sr-only">Digite seu e-mail</label>
+              <input type="email" name="email" formControlName="email" class="form-control" id="email"
+                placeholder="Digite seu e-mail" maxlength="60">
+            </div>
+            <div class="form-group">
+              <label for="senha" class="sr-only">Digite sua Senha</label>
+              <input type="password" name="senha" formControlName="senha" class="form-control" id="senha"
+                placeholder="Digite sua Senha" maxlength="25">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">
+                Entrar
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-
-    <div class="redirectToLogin">
-      <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
-    </div>
-
   </div>
 </div>
