@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -8,10 +9,12 @@ import {MatInputModule} from '@angular/material/input';
   declarations: [],
   imports: [
     CommonModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule
   ],
   exports: [
-    MatInputModule
+    MatInputModule,
+    MatMenuModule
   ]
 })
 export class MaterialModule { }
