@@ -18,11 +18,13 @@ export class NavbarComponent implements OnInit {
   }
 
   login(){
-    console.log("Chamou");
     this._router.navigate(['/login']);
   }
   logout(){
     this.auth.SignOut();
+  }
+  dashboard() {
+    this._router.navigate(['/dashboard']);
   }
 
 }

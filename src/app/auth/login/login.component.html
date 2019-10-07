@@ -4,7 +4,7 @@
     <div class="col-md-6 mx-auto">
       <div class="card">
         <div class="card-body text-center">
-          <h1>Metamorfose</h1>
+            <img class="mb-4" src="../../../assets/logo.png" alt="" width="380" height="100">
           <form [formGroup]="formLogin" #formDir="ngForm" (ngSubmit)="onSubmit()" novalidate>
             <div class="form-group">
               <label for="email" class="sr-only">Digite seu e-mail</label>
@@ -21,6 +21,7 @@
                 Entrar
               </button>
             </div>
+            <a href="#" (click)="signup()">Criar Conta</a>
           </form>
         </div>
       </div>
