@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { PostService } from '../post.service';
 import { AuthService } from 'src/app/shared/authentication.service';
 import { Post } from '../post';
 import { AngularFireDatabase } from '@angular/fire/database';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-list',
