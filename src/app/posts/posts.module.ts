@@ -8,6 +8,7 @@ import { PostEditComponent } from './post-edit/post-edit.component'
 import { PostListComponent } from './post-list/post-list.component'
 import { PostService } from './post.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: 'blog', component: PostListComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     SharedModule, 
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
     RouterModule.forChild(routes), 
   ],
   declarations: [
