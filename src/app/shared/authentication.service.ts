@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 
+
 export class AuthService {
   userData: any; // Save logged in user data
 
