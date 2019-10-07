@@ -7,7 +7,7 @@ import { PostDashboardComponent } from './post-dashboard/post-dashboard.componen
 import { PostEditComponent } from './post-edit/post-edit.component'
 import { PostListComponent } from './post-list/post-list.component'
 import { PostService } from './post.service'
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'blog', component: PostListComponent },
@@ -16,7 +16,12 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forChild(routes), FormsModule],
+  imports: [
+    SharedModule, 
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(routes), 
+  ],
   declarations: [
     PostDashboardComponent,
     PostEditComponent,
